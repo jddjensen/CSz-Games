@@ -1,0 +1,152 @@
+Plumber
+Teacher
+Lawyer
+Accountant
+Mechanic
+Nurse
+Chef
+Dentist
+Magician
+Astronaut
+Fast food worker
+Zookeeper
+Stand-up comedian
+Surgeon
+Pilot
+Barista
+Surgeon
+Anesthesiologist
+Paramedic
+Nurse
+Pharmacist
+EMT (Emergency Medical Technician)
+Radiologist
+Oncologist
+Cardiologist
+Pediatrician
+Obstetrician
+Trauma Surgeon
+Psychiatrist
+Neurosurgeon
+Epidemiologist
+Chiropractor
+Physical Therapist
+Medical Researcher
+Pilot
+Air Traffic Controller
+Helicopter Rescue Pilot
+Train Conductor
+Subway Operator
+Ship Captain
+Bus Driver
+Truck Driver
+Fighter Jet Pilot
+Flight Engineer
+Race Car Driver
+Structural Engineer
+Civil Engineer
+Bridge Inspector
+Electrician
+Crane Operator
+Demolition Expert
+Architect
+Tunnel Engineer
+Scaffolding Installer
+Mine Safety Inspector
+Judge
+Prosecutor
+Public Defender
+Police Officer
+Forensic Analyst
+FBI Agent
+CIA Agent
+Crime Scene Investigator
+Security Consultant
+Bounty Hunter
+Private Investigator
+Survival Instructor
+Firefighter
+Explosives Specialist
+Power Plant Operator
+Oil Rig Worker
+Deep Sea Diver
+Surgeon’s Assistant
+Bomb Squad Technician
+Hazmat Specialist
+Wildlife Conservationist
+Spacecraft Engineer
+Astronaut
+Nuclear Scientist
+Elevator Inspector
+Roller Coaster Engineer
+Lifeguard
+911 Operator
+Ethical Hacker
+Cybersecurity Analyst
+Bioweapons Defense Specialist
+Aircraft Mechanic
+Surgical Instrument Technician
+Food Safety Inspector
+Skydiving Instructor
+Bridge Maintenance Worker
+Theme Park Ride Operator
+Hostage Negotiator
+Court Reporter
+Search and Rescue Team Member
+Traffic Signal Technician
+High-Rise Window Cleaner
+Military Strategist
+Water Treatment Specialist
+Power Grid Technician
+Deep Cave Explorer
+Weather Forecaster
+Undercover Agent
+Rooftop Solar Installer
+Electric Lineworker
+Animal Control Officer
+Biochemical Engineer
+Fireworks Technician
+Drone Operator
+Space Weather Scientist
+Mountain Guide
+Dams and Reservoir Engineer
+Emergency Broadcast Coordinator
+Seismologist
+Submarine Operator
+Blood Bank Technician
+Helicopter Paramedic
+Weapons Safety Specialist
+Amusement Park Safety Inspector
+Storm Chaser
+Veterinary Surgeon
+Tank Operator
+Humanitarian Aid Coordinator
+Satellite Engineer
+Border Patrol Agent
+Disaster Response Coordinator
+Bomb Disposal Robot Operator
+Wildfire Prevention Specialist
+Pandemic Response Planner
+Mine Rescue Worker
+Gastroenterologist
+Artificial Intelligence Programmer
+Arctic Expedition Guide
+Nuclear Reactor Operator
+Jet Engine Mechanic
+OSHA Safety Inspector
+Rocket Scientist
+Self-Driving Car Programmer
+Fire Escape Planner
+Pipeline Leak Detector
+Toxicologist
+Extreme Sports Instructor
+Theme Park Structural Engineer
+Morgue Technician
+Zoo Veterinarian
+Missile Defense Engineer
+Ice Road Trucker
+Deep-Sea Welder
+High-Risk Negotiator
+Hostage Rescue Team Leader
+Extreme Environment Scientist
+Mars Mission Planner

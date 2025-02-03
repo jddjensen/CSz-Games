@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Movie</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" href="index.html">Back</a>
+  <div class="container">
+    <h1>My Movie</h1>
+    <p>
+      "My Movie" is an improv game where players are given random letters and must come up with a movie title 
+      that fits those letters. Try your best to make the title sound convincing!
+    </p>
+
+    <!-- Two Random Letters Section -->
+    <button onclick="generateLetters(2)">Generate 2 Letters</button>
+    <div id="twoLetterOutput" style="margin: 10px 0; font-size: 1.5em;"></div>
+
+    <!-- Three Random Letters Section -->
+    <button onclick="generateLetters(3)">Generate 3 Letters</button>
+    <div id="threeLetterOutput" style="margin: 10px 0; font-size: 1.5em;"></div>
+  </div>
+
+  <script>
+    // Function to generate random letters
+    function generateLetters(count) {
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let letters = "";
+      for (let i = 0; i < count; i++) {
+        letters += alphabet[Math.floor(Math.random() * alphabet.length)];
+      }
+
+      // Display output in the correct section
+      if (count === 2) {
+        document.getElementById('twoLetterOutput').innerText = "Letters: " + letters;
+      } else if (count === 3) {
+        document.getElementById('threeLetterOutput').innerText = "Letters: " + letters;
+      }
+    }
+  </script>
+</body>
+</html>

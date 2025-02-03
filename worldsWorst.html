@@ -12,17 +12,38 @@
     <div id="output">Your random profession will appear here.</div>
     <button onclick="generateProfession()">Random Profession</button>
   </div>
+
   <script>
-    const professions = [
-      "plumber",
-      "teacher",
-      "lawyer",
-      "accountant",
-      "mechanic",
-      "nurse",
-      "chef"
-    ];
+    let professions = [];
+
+    // Load professions from worlds_worst_professions.txt
+    function loadProfessions() {
+      fetch('worlds_worst_professions.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then(text => {
+          // Split by line, trim whitespace, and filter out empty lines
+          professions = text.split('\n').map(line => line.trim()).filter(line => line);
+        })
+        .catch(error => {
+          console.error('Error loading professions:', error);
+          document.getElementById('output').innerText = 'Error loading professions.';
+        });
+    }
+
+    // Call loadProfessions when the page loads
+    window.onload = loadProfessions;
+
+    // Generate a random profession
     function generateProfession() {
+      if (professions.length === 0) {
+        document.getElementById('output').innerText = 'No professions available.';
+        return;
+      }
       const randomProfession = professions[Math.floor(Math.random() * professions.length)];
       document.getElementById('output').innerText = randomProfession;
     }
