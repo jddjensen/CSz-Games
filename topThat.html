@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Top That</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" href="index.html">Back</a>
+  <div class="container">
+    <h1>Top That</h1>
+    <div id="output">
+      "Top That" is a game where players make the motion of the suggestion and take turns justifying what they are doing, ending with "Top That".
+    </div>
+    <button onclick="generateTopThatAction()">Next Action</button>
+  </div>
+
+  <script>
+    let actions = [];
+
+    // Load actions from the text file
+    function loadActions() {
+      fetch('top_that_actions.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then(text => {
+          // Split the text into lines, trim spaces, and remove empty lines
+          actions = text.split('\n').map(line => line.trim()).filter(line => line);
+        })
+        .catch(error => {
+          console.error('Error loading actions:', error);
+          document.getElementById('output').innerText = 'Error loading actions.';
+        });
+    }
+
+    // Call loadActions when the page loads
+    window.onload = loadActions;
+
+    // Generate a random action
+    function generateTopThatAction() {
+      if (actions.length === 0) {
+        document.getElementById('output').innerText = 'No actions available.';
+        return;
+      }
+      const randomIndex = Math.floor(Math.random() * actions.length);
+      const randomAction = actions[randomIndex];
+
+      document.getElementById('output').innerText = randomAction;
+    }
+  </script>
+</body>
+</html>

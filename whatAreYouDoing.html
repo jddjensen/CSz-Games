@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What Are You Doing?</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" href="index.html">Back</a>
+  <div class="container">
+    <h1>In the game What Are You Doing? The first player asks what the second player is doing. Using the Two letters given, they tell them what they are doing, in which the second player must act it out.</h1>
+    <p>Generate two random letters:</p>
+    <div id="letterOutput" style="margin: 10px 0; font-size: 2em;">--</div>
+    <button onclick="generateLetters()">Generate Letters</button>
+  </div>
+  
+  <script>
+    function generateLetters() {
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const randomLetter1 = letters[Math.floor(Math.random() * letters.length)];
+      const randomLetter2 = letters[Math.floor(Math.random() * letters.length)];
+      document.getElementById('letterOutput').innerText = randomLetter1 + randomLetter2;
+    }
+  </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Do Run Run</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,10 +12,38 @@
     <div id="output">Your random name will appear here.</div>
     <button onclick="generateName()">Random Name</button>
   </div>
+  
   <script>
-    const names = ["Bob", "Sam", "Max", "Joe", "Ben", "Jay", "Lee", "Ray"];
+    let namesArray = [];
+
+    // Load names from names.txt on page load
+    function loadNames() {
+      fetch('names.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then(text => {
+          // Split text by newline, trim each name, and filter out empty lines.
+          namesArray = text.split('\n').map(name => name.trim()).filter(name => name);
+        })
+        .catch(error => {
+          console.error('Error loading names:', error);
+          document.getElementById('output').innerText = 'Error loading names.';
+        });
+    }
+
+    // Call loadNames when the window loads
+    window.onload = loadNames;
+
     function generateName() {
-      const randomName = names[Math.floor(Math.random() * names.length)];
+      if (namesArray.length === 0) {
+        document.getElementById('output').innerText = 'No names available.';
+        return;
+      }
+      const randomName = namesArray[Math.floor(Math.random() * namesArray.length)];
       document.getElementById('output').innerText = randomName;
     }
   </script>
