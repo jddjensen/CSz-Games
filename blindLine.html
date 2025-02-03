@@ -9,16 +9,44 @@
   <a id="back" href="index.html">Back</a>
   <div class="container">
     <h1>Blind Line</h1>
-    <div id="output">Your sentence will appear here.</div>
+    <div id="output">Blind Line is an improv game where players perform a scene together while one actor is secretly assigned a line of dialogue they must deliver at the appropriate moment. The twist is that the actor doesn't know the line in advance, so when it's time to speak, they have to smoothly integrate the unexpected line into the ongoing scene.</div>
     <button onclick="generateSentence()">Random Sentence</button>
   </div>
   <script>
     const sentences = [
-      "The cat jumped over the fence.",
-      "A dog barked loudly in the distance.",
-      "Sunlight danced on the water.",
-      "The room was filled with laughter.",
-      "Birds sang harmoniously in the trees."
+   "I told you i was pregnant!",
+"I didn't know she was your mother.",
+"That was the third time today that's happened",
+"i met them back in school.",
+"Everything changed the moment I saw you.",
+"He whispered secrets only the night could hear.",
+"Sometimes silence speaks louder than words.",
+"She walked away without a backward glance.",
+"Time didn't heal the wounds we created.",
+"You already told me that.",
+"Dreams often fade into the realm of memories.",
+"He couldn't trust his own reflection.",
+"Words can never capture the depth of our feelings.",
+"Every moment with you felt like a stolen eternity.",
+"The truth was hidden behind her eyes.",
+"Regret lingered long after the music stopped.",
+"Her laughter echoed in the empty hallways.",
+"Fate played its cards in mysterious ways.",
+"Under the moonlight, they revealed their secrets.",
+"Every goodbye brought a promise of return.",
+"Hope glimmered in the midst of despair.",
+"Lost in the labyrinth of his thoughts.",
+"Memories haunted the corners of her mind.",
+"Life is a journey paved with both sorrow and joy.",
+"In that fleeting moment, everything seemed possible.",
+"Whispers of the past echoed in the silence.",
+"The road ahead was uncertain and wild.",
+"Shadows danced beneath the streetlights.",
+"Nothing was ever as simple as it seemed.",
+"Even the stars couldn't outshine her brilliance.",
+"Every sunrise brought a new beginning."
+
+
     ];
     function generateSentence() {
       const randomSentence = sentences[Math.floor(Math.random() * sentences.length)];

@@ -11,12 +11,19 @@
     <h1>Beasty Rap</h1>
     <div id="output">Your random name will appear here.</div>
     <button onclick="generateName()">Random Name</button>
+    <!-- Audio element: Adjust the src to point to your MP3 file -->
+    <audio id="audio" src="beastyRap.mp3"></audio>
   </div>
+  
   <script>
     const names = ["Bob", "Sam", "Max", "Joe", "Ben", "Jay", "Lee", "Ray"];
+    
     function generateName() {
       const randomName = names[Math.floor(Math.random() * names.length)];
       document.getElementById('output').innerText = randomName;
+      
+      // Play the MP3 file
+      document.getElementById('audio').play();
     }
   </script>
 </body>

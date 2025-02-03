@@ -9,14 +9,95 @@
   <a id="back" href="index.html">Back</a>
   <div class="container">
     <h1>Changing Styles</h1>
-    <div id="output">Your random style will appear here.</div>
+    <div id="output">Changing Styles is a fast-paced, scene-based improv game where performers begin a realistic, grounded scene. At any moment, a prompt (such as an accent, movie genre, or high school clique) is thrown in, and players must instantly adapt their characters and dialogue to the new style..</div>
     <button onclick="generateStyle()">Random Style</button>
   </div>
   <script>
-    const highSchoolClicks = ["snap", "clap", "pop"];
-    const accents = ["British", "Australian", "Southern", "New York"];
+    const highSchoolClicks = ["jocks", "nerds", "goths", "hipsters", "band geeks", "theater kids", "cheerleaders", "skaters", "emo kids", "preps", "ravers", "art kids", "bookworms", "gamers", "hip hop kids", "metalheads", "science geeks", "debs", "punks", "class clowns", "stoners", "loners", "dancers", "fashionistas", "socialites", "techies", "photographers", "poets", "drama queens", "debate team", "music lovers", "rappers", "outcasts", "trendsetters"]
+    ;
+    const accents = [
+  "Cockney (East London)",
+  "English",
+  "Yorkshire",
+  "Scottish (Edinburgh)",
+  "Glaswegian (Scotland)",
+  "Irish",
+  "Welsh",
+  "North Dakota",
+  "Southern",
+  "New York (Brooklyn/Bronx)",
+  "Boston",
+  "Midwestern American",
+  "Canadian (e.g., Toronto)",
+  "Australian",
+  "New Zealand",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Russian",
+  "Swedish (Scandinavian)",
+  "Dutch",
+  "Greek",
+  "South African"]
+;
     const movieGenres = ["action", "comedy", "horror", "drama"];
-    const emotions = ["happy", "sad", "angry", "excited"];
+    const emotions = [
+  "happy",
+  "sad",
+  "angry",
+  "excited",
+  "content",
+  "frustrated",
+  "anxious",
+  "jealous",
+  "grateful",
+  "lonely",
+  "hopeful",
+  "nostalgic",
+  "guilty",
+  "disappointed",
+  "fearful",
+  "confident",
+  "relaxed",
+  "bored",
+  "amused",
+  "curious",
+  "proud",
+  "shy",
+  "embarrassed",
+  "ashamed",
+  "inspired",
+  "apathetic",
+  "optimistic",
+  "pessimistic",
+  "ecstatic",
+  "depressed",
+  "calm",
+  "stressed",
+  "overwhelmed",
+  "insecure",
+  "playful",
+  "determined",
+  "motivated",
+  "disillusioned",
+  "blissful",
+  "melancholic",
+  "admiring",
+  "alarmed",
+  "courageous",
+  "impatient",
+  "resigned",
+  "vulnerable",
+  "mysterious",
+  "hysterical",
+  "eager",
+  "serene",
+  "pensive",
+  "suspicious",
+  "relieved"
+]
+;
 
     function generateStyle() {
       const categories = ["highSchool", "accent", "genre", "emotion"];
