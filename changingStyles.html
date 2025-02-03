@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a id="back" href="index.html">Back</a>
-  <div class="container">
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
     <h1>Changing Styles</h1>
     <!-- Game Descriptor -->
     <p>
@@ -85,6 +86,14 @@
           document.getElementById('styleOutput').innerText = 'Error loading style prompts for ' + category.name;
         });
     }
+    document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
   </script>
 </body>
 </html>

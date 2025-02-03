@@ -10,16 +10,17 @@
   <header>
     <h1>Select an Improv Game</h1>
   </header>
-  <div class="container">
+  <!-- Give the container an ID so we can animate it -->
+  <div class="container" id="pageContainer">
     
     <!-- Opener Games -->
     <div class="game-type">
       <h2>Opener Games</h2>
       <ul>
-        <li><a href="beastyRap.html">Beasty Rap</a></li>
-        <li><a href="doRunRun.html">Do Run Run</a></li>
-        <li><a href="whatAreYouDoing.html">What Are You Doing?</a></li>
-        <li><a href="topThat.html">Top That</a></li>
+        <li><a class="transition" href="beastyRap.html">Beasty Rap</a></li>
+        <li><a class="transition" href="doRunRun.html">Do Run Run</a></li>
+        <li><a class="transition" href="whatAreYouDoing.html">What Are You Doing?</a></li>
+        <li><a class="transition" href="topThat.html">Top That</a></li>
       </ul>
     </div>
 
@@ -27,8 +28,8 @@
     <div class="game-type">
       <h2>Scene Based Games</h2>
       <ul>
-        <li><a href="blindLine.html">Blind Line</a></li>
-        <li><a href="changingStyles.html">Changing Styles</a></li>
+        <li><a class="transition" href="blindLine.html">Blind Line</a></li>
+        <li><a class="transition" href="changingStyles.html">Changing Styles</a></li>
       </ul>
     </div>
 
@@ -36,8 +37,8 @@
     <div class="game-type">
       <h2>Gimmick Games</h2>
       <ul>
-        <li><a href="spellingBee.html">Spelling Bee</a></li>
-        <li><a href="myMovie.html">My Movie</a></li>  <!-- ✅ NEW GAME ADDED -->
+        <li><a class="transition" href="spellingBee.html">Spelling Bee</a></li>
+        <li><a class="transition" href="myMovie.html">My Movie</a></li>  <!-- NEW GAME ADDED -->
       </ul>
     </div>
 
@@ -45,11 +46,28 @@
     <div class="game-type">
       <h2>Closer Games</h2>
       <ul>
-        <li><a href="worldsWorst.html">Worlds Worst</a></li>
-        <li><a href="heyWeightier.html">Hey Weightier</a></li>
+        <li><a class="transition" href="worldsWorst.html">Worlds Worst</a></li>
+        <li><a class="transition" href="heyWeightier.html">Hey Weighter</a></li>
       </ul>
     </div>
 
   </div>
+  
+  <!-- JavaScript for smooth forward slide transition -->
+  <script>
+    // For each link with the "transition" class, add a forward slide-out animation on click.
+    document.querySelectorAll('a.transition').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent immediate navigation
+        const targetUrl = this.href;
+        // Apply the forward slide-out animation to the container
+        document.getElementById('pageContainer').classList.add('slide-out-forward');
+        // After the transition completes (500ms), navigate to the target page
+        setTimeout(() => {
+          window.location.href = targetUrl;
+        }, 500);
+      });
+    });
+  </script>
 </body>
 </html>

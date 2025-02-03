@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a id="back" href="index.html">Back</a>
-  <div class="container">
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
     <h1>My Movie</h1>
     <p>
       "My Movie" is an improv game where players are given random letters and must come up with a movie title 
@@ -40,6 +41,14 @@
         document.getElementById('threeLetterOutput').innerText = "Letters: " + letters;
       }
     }
+    document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
   </script>
 </body>
 </html>

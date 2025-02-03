@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a id="back" href="index.html">Back</a>
-  <div class="container">
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
     <h1>In the game What Are You Doing? The first player asks what the second player is doing. Using the Two letters given, they tell them what they are doing, in which the second player must act it out.</h1>
     <p>Generate two random letters:</p>
     <div id="letterOutput" style="margin: 10px 0; font-size: 2em;">--</div>
@@ -22,6 +23,14 @@
       const randomLetter2 = letters[Math.floor(Math.random() * letters.length)];
       document.getElementById('letterOutput').innerText = randomLetter1 + randomLetter2;
     }
+    document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
   </script>
 </body>
 </html>

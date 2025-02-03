@@ -7,24 +7,58 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a id="back" href="index.html">Back</a>
-  <div class="container">
-    <h1>Hey Weightier</h1>
-    <div id="output">Something random will appear here.</div>
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
+    <h1>Hey Weighter</h1>
+    <div id="output">To play "Hey Weighter", you need an audience volunteer. When you tap them on the shoulder they say "Hey Weighter, there's a ______ in my soup. Then you make a pun off of the prompt."</div>
     <button onclick="generateRandom()">Generate Random</button>
   </div>
+
   <script>
-    const randomThings = [
-      "A mysterious shadow passes by.",
-      "A sudden burst of laughter.",
-      "The clock strikes thirteen.",
-      "An unexpected twist unfolds.",
-      "A secret is revealed."
-    ];
-    function generateRandom() {
-      const randomThing = randomThings[Math.floor(Math.random() * randomThings.length)];
-      document.getElementById('output').innerText = randomThing;
+    let prompts = [];
+
+    // Load prompts from hey_weightier_prompts.txt
+    function loadPrompts() {
+      fetch('hey_weightier_prompts.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then(text => {
+          // Split by line, trim whitespace, and filter out empty lines
+          prompts = text.split('\n').map(line => line.trim()).filter(line => line);
+        })
+        .catch(error => {
+          console.error('Error loading prompts:', error);
+          document.getElementById('output').innerText = 'Error loading prompts.';
+        });
     }
+
+    // Call loadPrompts when the page loads
+    window.onload = loadPrompts;
+
+    // Generate a random prompt
+    function generateRandom() {
+      if (prompts.length === 0) {
+        document.getElementById('output').innerText = 'No prompts available.';
+        return;
+      }
+      const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+      document.getElementById('output').innerText = randomPrompt;
+    }
+
+    // Back button animation
+    document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
   </script>
 </body>
 </html>

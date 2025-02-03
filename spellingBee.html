@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a id="back" href="index.html">Back</a>
-  <div class="container">
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
     <h1>Spelling Bee</h1>
     <div id="output">Spelling Bee is a improv gimmick game where at least three players stand in a line and take turns adding one letter at a time to spell out a word. The challenge lies in the spontaneous delivery—each player must quickly decide and confidently contribute the next letter while keeping the flow of the game going. </div>
     <button onclick="generateWord()">Next Word</button>
@@ -31,6 +32,14 @@
         document.getElementById('output').innerText = words[words.length - 1];
       }
     }
+    document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
   </script>
 </body>
 </html>

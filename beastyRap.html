@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Back button -->
-  <a id="back" href="index.html">Back</a>
+ <!-- Back button with class "back-transition" -->
+ <a id="back" class="back-transition" href="index.html">Back</a>
   
-  <div class="container">
+ <div class="container" id="pageContainer">
     <h1>Beasty Rap</h1>
     <div id="output">Your random name will appear here.</div>
     <button onclick="generateName()">Random Name</button>
@@ -54,6 +54,15 @@
       // Play the MP3 file
       document.getElementById('audio').play();
     }
+   // Attach an event listener for the back button to perform the reverse slide transition.
+   document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
   </script>
 </body>
 </html>

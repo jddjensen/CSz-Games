@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a id="back" href="index.html">Back</a>
-  <div class="container">
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
     <h1>Do Run Run</h1>
     <div id="output">Your random name will appear here.</div>
     <button onclick="generateName()">Random Name</button>
@@ -47,6 +48,14 @@
       const randomName = namesArray[Math.floor(Math.random() * namesArray.length)];
       document.getElementById('output').innerText = randomName;
     }
+    document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
   </script>
 </body>
 </html>
