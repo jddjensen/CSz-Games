@@ -9,115 +9,80 @@
   <a id="back" href="index.html">Back</a>
   <div class="container">
     <h1>Changing Styles</h1>
-    <div id="output">Changing Styles is a fast-paced, scene-based improv game where performers begin a realistic, grounded scene. At any moment, a prompt (such as an accent, movie genre, or high school clique) is thrown in, and players must instantly adapt their characters and dialogue to the new style..</div>
-    <button onclick="generateStyle()">Random Style</button>
+    <!-- Game Descriptor -->
+    <p>
+      Changing Styles is a fast-paced, scene-based improv game where performers begin a realistic, grounded scene.
+      At any moment, a prompt (such as an accent, movie genre, high school clique, or emotion) is thrown in, and players must instantly
+      adapt their characters and dialogue to the new style.
+    </p>
+    
+    <!-- Scene Prompt Section -->
+    <button onclick="getScenePrompt()">Scene Prompt</button>
+    <div id="scenePromptOutput" style="margin: 10px 0; font-size: 1.5em;"></div>
+    
+    <!-- Style Change Section -->
+    <button onclick="generateStyleChange()">Style Change</button>
+    <div id="styleOutput" style="margin: 10px 0; font-size: 1.5em;"></div>
   </div>
+  
   <script>
-    const highSchoolClicks = ["jocks", "nerds", "goths", "hipsters", "band geeks", "theater kids", "cheerleaders", "skaters", "emo kids", "preps", "ravers", "art kids", "bookworms", "gamers", "hip hop kids", "metalheads", "science geeks", "debs", "punks", "class clowns", "stoners", "loners", "dancers", "fashionistas", "socialites", "techies", "photographers", "poets", "drama queens", "debate team", "music lovers", "rappers", "outcasts", "trendsetters"]
-    ;
-    const accents = [
-  "Cockney (East London)",
-  "English",
-  "Yorkshire",
-  "Scottish (Edinburgh)",
-  "Glaswegian (Scotland)",
-  "Irish",
-  "Welsh",
-  "North Dakota",
-  "Southern",
-  "New York (Brooklyn/Bronx)",
-  "Boston",
-  "Midwestern American",
-  "Canadian (e.g., Toronto)",
-  "Australian",
-  "New Zealand",
-  "French",
-  "German",
-  "Italian",
-  "Spanish",
-  "Russian",
-  "Swedish (Scandinavian)",
-  "Dutch",
-  "Greek",
-  "South African"]
-;
-    const movieGenres = ["action", "comedy", "horror", "drama"];
-    const emotions = [
-  "happy",
-  "sad",
-  "angry",
-  "excited",
-  "content",
-  "frustrated",
-  "anxious",
-  "jealous",
-  "grateful",
-  "lonely",
-  "hopeful",
-  "nostalgic",
-  "guilty",
-  "disappointed",
-  "fearful",
-  "confident",
-  "relaxed",
-  "bored",
-  "amused",
-  "curious",
-  "proud",
-  "shy",
-  "embarrassed",
-  "ashamed",
-  "inspired",
-  "apathetic",
-  "optimistic",
-  "pessimistic",
-  "ecstatic",
-  "depressed",
-  "calm",
-  "stressed",
-  "overwhelmed",
-  "insecure",
-  "playful",
-  "determined",
-  "motivated",
-  "disillusioned",
-  "blissful",
-  "melancholic",
-  "admiring",
-  "alarmed",
-  "courageous",
-  "impatient",
-  "resigned",
-  "vulnerable",
-  "mysterious",
-  "hysterical",
-  "eager",
-  "serene",
-  "pensive",
-  "suspicious",
-  "relieved"
-]
-;
-
-    function generateStyle() {
-      const categories = ["highSchool", "accent", "genre", "emotion"];
-      const choice = categories[Math.floor(Math.random() * categories.length)];
-      let result = "";
-      switch (choice) {
-        case "highSchool":
-          result = highSchoolClicks[Math.floor(Math.random() * highSchoolClicks.length)] + " (High School Click)";
-          break;
-        case "accent":
-          result = accents[Math.floor(Math.random() * accents.length)] + " accent";
-          break;
-        case "genre":
-          result = movieGenres[Math.floor(Math.random() * movieGenres.length)] + " movie genre";
-          break;
-        case "emotion":
-          result = emotions[Math.floor(Math.random() * emotions.length)] + " emotion";
-          break;
-      }
-      document.getElementById('output').innerText = result;
+    // Function to fetch a random scene prompt from scene_prompts.txt
+    function getScenePrompt() {
+      fetch('scene_prompts.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(text => {
+          // Split text by newline, trim each line, and filter out any empty lines
+          const prompts = text.split('\n').map(line => line.trim()).filter(line => line);
+          const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+          document.getElementById('scenePromptOutput').innerText = randomPrompt;
+        })
+        .catch(error => {
+          console.error('Error loading scene prompts:', error);
+          document.getElementById('scenePromptOutput').innerText = 'Error loading scene prompts.';
+        });
+    }
+    
+    // Function to generate a random style change from an external text file
+    function generateStyleChange() {
+      // Define an array of categories with corresponding text file names.
+      const categories = [
+        { name: "Highschool Clique", file: "highschool_clique.txt" },
+        { name: "Movie Genera", file: "movie_genera.txt" },
+        { name: "Emotion", file: "emotion.txt" },
+        { name: "Accent", file: "accents.txt" }
+      ];
+      
+      // Pick a random category.
+      const category = categories[Math.floor(Math.random() * categories.length)];
+      
+      // Fetch the corresponding text file.
+      fetch(category.file)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(text => {
+          // Split the text into lines, trim, and filter out empty lines.
+          const lines = text.split('\n').map(line => line.trim()).filter(line => line);
+          if (lines.length === 0) {
+            throw new Error('No prompts found in ' + category.file);
+          }
+          // Pick a random prompt from the file.
+          const randomPrompt = lines[Math.floor(Math.random() * lines.length)];
+          // Display the prompt with the category name in parentheses.
+          document.getElementById('styleOutput').innerText = randomPrompt + " (" + category.name + ")";
+        })
+        .catch(error => {
+          console.error('Error loading style prompts for category ' + category.name + ':', error);
+          document.getElementById('styleOutput').innerText = 'Error loading style prompts for ' + category.name;
+        });
     }
   </script>
 </body>
