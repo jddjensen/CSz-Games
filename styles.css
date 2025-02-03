@@ -141,7 +141,47 @@ a:hover, button:hover {
 }
 
 /* Existing styles for container and responsiveness might be here */
+#listenButton, button[onclick="getScenePrompt()"] {
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease;
+  margin: 10px 0;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+#listenButton:hover, button[onclick="getScenePrompt()"]:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+#listenButton:active, button[onclick="getScenePrompt()"]:active {
+  transform: scale(0.98);
+}
+
+.output {
+  margin: 20px 0;
+  padding: 20px;
+  background: var(--background-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px var(--shadow);
+  font-size: 1.5em;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .output {
+    background: var(--background-dark);
+  }
+}
 
 /* --- Responsive adjustments --- */
 @media (max-width: 768px) {

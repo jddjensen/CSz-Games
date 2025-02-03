@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questions Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
+    <h1>Questions Game</h1>
+    <p>
+      In this game, you must speak in questions. If your sentence doesn't sound like a question, you'll hear a buzzer!
+    </p>
+    
+    <!-- Scene Prompt Button -->
+    <button onclick="getScenePrompt()">Get Scene Prompt</button>
+    <div id="scenePromptOutput" class="output"></div>
+    
+    <!-- Button to start/stop listening -->
+    <button id="listenButton">Begin Asking Questions</button>
+    
+    <!-- Display recognized text -->
+    <div id="output" class="output"></div>
+  </div>
+
+  <!-- Audio for buzzer sound -->
+  <audio id="buzzer" src="SoundFX/buzz.mp3"></audio>
+
+  <script>
+    // Check if the browser supports the Web Speech API
+    if (!('webkitSpeechRecognition' in window)) {
+      alert('Your browser does not support speech recognition. Please use Chrome or another supported browser.');
+    }
+
+    // Initialize speech recognition
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = true; // Keep listening until stopped
+    recognition.interimResults = false; // Only final results
+    recognition.lang = 'en-US'; // Set language
+
+    // Get DOM elements
+    const listenButton = document.getElementById('listenButton');
+    const output = document.getElementById('output');
+    const scenePromptOutput = document.getElementById('scenePromptOutput');
+    const buzzer = document.getElementById('buzzer');
+
+    // Toggle listening state
+    let isListening = false;
+
+    listenButton.addEventListener('click', () => {
+      if (isListening) {
+        recognition.stop();
+        listenButton.textContent = 'Begin Asking Questions';
+        isListening = false;
+      } else {
+        recognition.start();
+        listenButton.textContent = 'Stop Listening';
+        isListening = true;
+      }
+    });
+
+    // Heuristic function to determine if a transcript sounds like a question.
+    function isQuestion(text) {
+      const trimmed = text.trim();
+      // If it ends with a question mark, we consider it a question.
+      if (trimmed.endsWith('?')) {
+        return true;
+      }
+      // Common interrogative words (feel free to adjust this list)
+      const interrogatives = ['what', 'why', 'where', 'how', 'who', 'when', 'is', 'are', 'do', 'does', 'can', 'could', 'would', 'should', 'did'];
+      const lowerText = trimmed.toLowerCase();
+      // Check if the text starts with any interrogative word followed by a space
+      for (let word of interrogatives) {
+        if (lowerText.startsWith(word + ' ')) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    // Handle speech recognition results
+    recognition.onresult = (event) => {
+      const transcript = event.results[event.results.length - 1][0].transcript;
+      output.textContent = transcript;
+
+      // Use the heuristic to determine if the transcript is a question.
+      if (!isQuestion(transcript)) {
+        buzzer.play(); // Play the buzzer sound if it does not sound like a question.
+      }
+    };
+
+    // Handle errors
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error:', event.error);
+      output.textContent = 'Error: ' + event.error;
+    };
+
+    // Handle when recognition ends
+    recognition.onend = () => {
+      if (isListening) {
+        recognition.start(); // Restart listening if still active
+      }
+    };
+
+    // Function to fetch a random scene prompt from scene_prompts.txt
+    function getScenePrompt() {
+      fetch('scene_prompts.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(text => {
+          // Split text by newline, trim each line, and filter out any empty lines
+          const prompts = text.split('\n').map(line => line.trim()).filter(line => line);
+          const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+          scenePromptOutput.textContent = randomPrompt;
+        })
+        .catch(error => {
+          console.error('Error loading scene prompts:', error);
+          scenePromptOutput.textContent = 'Error loading scene prompts.';
+        });
+    }
+
+    // Back button transition
+    document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
+  </script>
+</body>
+</html>

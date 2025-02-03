@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tinder Swipe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Back button for reverse navigation -->
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <!-- Main content container -->
+  <div class="container" id="pageContainer">
+    <h1>Tinder Swipe</h1>
+    <p>Press the button to start the prompt sequence.</p>
+    <button id="startButton">Start Tinder Swipe</button>
+  </div>
+  
+  <script>
+    // Timer IDs to manage the sequence
+    let timeout1, timeout2, timeout3;
+
+    // Create audio objects for the beep and buzz sounds from the SoundFX folder.
+    const beepSound = new Audio('SoundFX/beep.mp3');
+    const buzzSound = new Audio('SoundFX/buzz.mp3');
+
+    // Cancel any existing timers
+    function resetTimers() {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+      clearTimeout(timeout3);
+    }
+
+    function startTinderSwipe() {
+      // Reset any previous timers (and any ongoing sound sequence)
+      resetTimers();
+
+      // Optionally remove any slide-out classes if the user re-triggers the sequence.
+      const container = document.getElementById('pageContainer');
+      container.classList.remove('slide-out-forward', 'slide-out-back');
+
+      // After 1 second, play the beep sound.
+      timeout1 = setTimeout(() => {
+        beepSound.play();
+      }, 1000);
+
+      // After an additional 7 seconds (total 8 seconds), randomly play either the beep or buzz sound.
+      timeout2 = setTimeout(() => {
+        if (Math.random() < 0.5) {
+          beepSound.play();
+        } else {
+          buzzSound.play();
+        }
+      }, 8000);
+
+      // After an additional 15 seconds (total 23 seconds), play the buzz sound.
+      timeout3 = setTimeout(() => {
+        buzzSound.play();
+      }, 23000);
+    }
+
+    // Attach the event listener to the Start button.
+    document.getElementById('startButton').addEventListener('click', startTinderSwipe);
+  </script>
+</body>
+</html>
