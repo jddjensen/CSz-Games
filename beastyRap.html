@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Beasty Rap</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" href="index.html">Back</a>
+  <div class="container">
+    <h1>Beasty Rap</h1>
+    <div id="output">Your random name will appear here.</div>
+    <button onclick="generateName()">Random Name</button>
+  </div>
+  <script>
+    const names = ["Bob", "Sam", "Max", "Joe", "Ben", "Jay", "Lee", "Ray"];
+    function generateName() {
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      document.getElementById('output').innerText = randomName;
+    }
+  </script>
+</body>
+</html>

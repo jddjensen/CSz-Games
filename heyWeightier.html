@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hey Weightier</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" href="index.html">Back</a>
+  <div class="container">
+    <h1>Hey Weightier</h1>
+    <div id="output">Something random will appear here.</div>
+    <button onclick="generateRandom()">Generate Random</button>
+  </div>
+  <script>
+    const randomThings = [
+      "A mysterious shadow passes by.",
+      "A sudden burst of laughter.",
+      "The clock strikes thirteen.",
+      "An unexpected twist unfolds.",
+      "A secret is revealed."
+    ];
+    function generateRandom() {
+      const randomThing = randomThings[Math.floor(Math.random() * randomThings.length)];
+      document.getElementById('output').innerText = randomThing;
+    }
+  </script>
+</body>
+</html>

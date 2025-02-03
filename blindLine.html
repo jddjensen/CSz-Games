@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blind Line</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" href="index.html">Back</a>
+  <div class="container">
+    <h1>Blind Line</h1>
+    <div id="output">Your sentence will appear here.</div>
+    <button onclick="generateSentence()">Random Sentence</button>
+  </div>
+  <script>
+    const sentences = [
+      "The cat jumped over the fence.",
+      "A dog barked loudly in the distance.",
+      "Sunlight danced on the water.",
+      "The room was filled with laughter.",
+      "Birds sang harmoniously in the trees."
+    ];
+    function generateSentence() {
+      const randomSentence = sentences[Math.floor(Math.random() * sentences.length)];
+      document.getElementById('output').innerText = randomSentence;
+    }
+  </script>
+</body>
+</html>

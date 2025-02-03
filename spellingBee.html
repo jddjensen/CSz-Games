@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spelling Bee</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" href="index.html">Back</a>
+  <div class="container">
+    <h1>Spelling Bee</h1>
+    <div id="output">Press the button for a word.</div>
+    <button onclick="generateWord()">Next Word</button>
+  </div>
+  <script>
+    const words = [
+      "cat",
+      "bake",
+      "planet",
+      "microscope",
+      "metamorphosis",
+      "antidisestablishmentarianism"
+    ];
+    let currentIndex = 0;
+    function generateWord() {
+      if (currentIndex < words.length) {
+        document.getElementById('output').innerText = words[currentIndex];
+        currentIndex++;
+      } else {
+        document.getElementById('output').innerText = words[words.length - 1];
+      }
+    }
+  </script>
+</body>
+</html>

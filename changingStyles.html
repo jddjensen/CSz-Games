@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Changing Styles</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" href="index.html">Back</a>
+  <div class="container">
+    <h1>Changing Styles</h1>
+    <div id="output">Your random style will appear here.</div>
+    <button onclick="generateStyle()">Random Style</button>
+  </div>
+  <script>
+    const highSchoolClicks = ["snap", "clap", "pop"];
+    const accents = ["British", "Australian", "Southern", "New York"];
+    const movieGenres = ["action", "comedy", "horror", "drama"];
+    const emotions = ["happy", "sad", "angry", "excited"];
+
+    function generateStyle() {
+      const categories = ["highSchool", "accent", "genre", "emotion"];
+      const choice = categories[Math.floor(Math.random() * categories.length)];
+      let result = "";
+      switch (choice) {
+        case "highSchool":
+          result = highSchoolClicks[Math.floor(Math.random() * highSchoolClicks.length)] + " (High School Click)";
+          break;
+        case "accent":
+          result = accents[Math.floor(Math.random() * accents.length)] + " accent";
+          break;
+        case "genre":
+          result = movieGenres[Math.floor(Math.random() * movieGenres.length)] + " movie genre";
+          break;
+        case "emotion":
+          result = emotions[Math.floor(Math.random() * emotions.length)] + " emotion";
+          break;
+      }
+      document.getElementById('output').innerText = result;
+    }
+  </script>
+</body>
+</html>

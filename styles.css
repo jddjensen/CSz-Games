@@ -1,0 +1,122 @@
+/* Define color variables for consistency */
+:root {
+    --primary-color: #0077cc;
+    --primary-dark: #005fa3;
+    --background: #f4f4f9;
+    --white: #ffffff;
+    --text-color: #333333;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Reset some basic elements */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global body styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  
+  /* Container to center content */
+  .container {
+    max-width: 960px;
+    margin: 80px auto 20px auto; /* top margin increased to avoid overlap with fixed back button */
+    padding: 20px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--box-shadow);
+  }
+  
+  /* Header style (optional) */
+  header {
+    text-align: center;
+    padding: 20px 0;
+    background: var(--primary-color);
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  
+  /* Headings */
+  h1, h2, h3 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Game type sections for the index page */
+  .game-type {
+    background: var(--white);
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--box-shadow);
+  }
+  
+  .game-type h2 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+  }
+  
+  /* Unordered lists for game links */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  ul li {
+    flex: 1 1 auto;
+  }
+  
+  /* Style for links and buttons */
+  a, button {
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s ease;
+    cursor: pointer;
+  }
+  
+  a:hover, button:hover {
+    background: var(--primary-dark);
+  }
+  
+  /* Back button styling (fixed in the upper left corner) */
+  #back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: var(--primary-dark);
+    padding: 10px 15px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--white);
+    transition: background 0.3s ease;
+  }
+  
+  #back:hover {
+    background: var(--primary-color);
+  }
+  
+  /* Specific adjustments for output text in game pages */
+  #output {
+    margin: 20px 0;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  
