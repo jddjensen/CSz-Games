@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deleted Scenes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
+    <h1>Deleted Scenes</h1>
+    <div id="output">Your random movie will appear here.</div>
+    <button onclick="generateMovie()">Random Movie</button>
+  </div>
+
+  <script>
+    let movies = [];
+
+    // Load movies from deleted_scenes_movies.txt
+    function loadMovies() {
+      fetch('deleted_scenes_movies.txt')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.text();
+        })
+        .then(text => {
+          // Split by line, trim whitespace, and filter out empty lines
+          movies = text.split('\n').map(line => line.trim()).filter(line => line);
+        })
+        .catch(error => {
+          console.error('Error loading movies:', error);
+          document.getElementById('output').innerText = 'Error loading movies.';
+        });
+    }
+
+    // Call loadMovies when the page loads
+    window.onload = loadMovies;
+
+    // Generate a random movie
+    function generateMovie() {
+      if (movies.length === 0) {
+        document.getElementById('output').innerText = 'No movies available.';
+        return;
+      }
+      const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+      document.getElementById('output').innerText = randomMovie;
+    }
+
+    // Back button functionality
+    document.getElementById('back').addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetUrl = this.href;
+      document.getElementById('pageContainer').classList.add('slide-out-back');
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 500);
+    });
+  </script>
+</body>
+</html>

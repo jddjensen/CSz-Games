@@ -11,27 +11,41 @@
   
   <div class="container" id="pageContainer">
     <h1>Spelling Bee</h1>
-    <div id="output">Spelling Bee is a improv gimmick game where at least three players stand in a line and take turns adding one letter at a time to spell out a word. The challenge lies in the spontaneous delivery—each player must quickly decide and confidently contribute the next letter while keeping the flow of the game going. </div>
+    <div id="output">Spelling Bee is an improv gimmick game where at least three players stand in a line and take turns adding one letter at a time to spell out a word. The challenge lies in the spontaneous delivery—each player must quickly decide and confidently contribute the next letter while keeping the flow of the game going. </div>
     <button onclick="generateWord()">Next Word</button>
   </div>
   <script>
-    const words = [
-      "cat",
-      "bake",
-      "planet",
-      "microscope",
-      "metamorphosis",
-      "antidisestablishmentarianism"
+    const wordFiles = [
+      'spellingbee-words/4-letter-words.txt',
+      'spellingbee-words/5-letter-words.txt',
+      'spellingbee-words/6-letter-words.txt',
+      'spellingbee-words/7-letter-words.txt',
+      'spellingbee-words/10-letter-words.txt',
+      'spellingbee-words/really-big-words.txt'
     ];
-    let currentIndex = 0;
-    function generateWord() {
-      if (currentIndex < words.length) {
-        document.getElementById('output').innerText = words[currentIndex];
-        currentIndex++;
-      } else {
-        document.getElementById('output').innerText = words[words.length - 1];
-      }
+    let currentFileIndex = 0;
+    let words = [];
+
+    function loadWords(file) {
+      return fetch(file)
+        .then(response => response.text())
+        .then(text => text.split('\n').filter(word => word.trim() !== ''));
     }
+
+    async function generateWord() {
+      if (words.length === 0) {
+        if (currentFileIndex < wordFiles.length) {
+          words = await loadWords(wordFiles[currentFileIndex]);
+          currentFileIndex++;
+        } else {
+          words = await loadWords(wordFiles[wordFiles.length - 1]);
+        }
+      }
+      const randomIndex = Math.floor(Math.random() * words.length);
+      document.getElementById('output').innerText = words[randomIndex];
+      words.splice(randomIndex, 1); // Remove the word so it doesn't repeat
+    }
+
     document.getElementById('back').addEventListener('click', function(e) {
       e.preventDefault();
       const targetUrl = this.href;

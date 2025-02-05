@@ -1,0 +1,4 @@
+microscope
+elephant
+giraffe
+kangaroo
