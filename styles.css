@@ -232,3 +232,42 @@ a:hover, button:hover {
     font-size: 0.8em;
   }
 }
+/* Button styling */
+.game-button {
+  display: block; /* Make buttons block-level for consistent width */
+  width: 100%; /* Full width */
+  max-width: 300px; /* Limit width for larger screens */
+  margin: 10px auto; /* Center buttons and add spacing */
+  padding: 15px 20px; /* Comfortable padding */
+  font-size: 1.1em; /* Readable font size */
+  font-weight: 500; /* Medium font weight */
+  color: var(--white); /* Text color */
+  background: var(--primary-color); /* Background color */
+  border: none; /* Remove default border */
+  border-radius: var(--border-radius); /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease; /* Smooth transitions */
+  text-align: center; /* Center text */
+}
+
+.game-button:hover {
+  background: var(--primary-dark); /* Darker background on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.game-button:active {
+  transform: translateY(0); /* Reset lift effect on click */
+}
+
+/* Output styling */
+.output {
+  margin: 20px 0; /* Spacing around outputs */
+  padding: 20px; /* Padding inside outputs */
+  background: var(--white); /* Background color */
+  border-radius: var(--border-radius); /* Rounded corners */
+  box-shadow: 0 4px 10px var(--shadow); /* Subtle shadow */
+  font-size: 1.2em; /* Readable font size */
+  text-align: center; /* Center text */
+  color: var(--text-color); /* Text color */
+}
+

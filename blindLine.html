@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-   <!-- Back button with class "back-transition" -->
-   <a id="back" class="back-transition" href="index.html">Back</a>
-   <div class="container" id="pageContainer">
+  <!-- Back button with class "back-transition" -->
+  <a id="back" class="back-transition" href="index.html">Back</a>
+  
+  <div class="container" id="pageContainer">
     <h1>Blind Line</h1>
     <p>
       Blind Line is an improv game where players perform a scene together while one actor is secretly assigned a 
@@ -18,12 +19,12 @@
     </p>
 
     <!-- Scene Prompt Section -->
-    <button onclick="getScenePrompt()">Scene Prompt</button>
-    <div id="scenePromptOutput" style="margin: 10px 0; font-size: 1.5em;"></div>
+    <button class="game-button" onclick="getScenePrompt()">Scene Prompt</button>
+    <div id="scenePromptOutput" class="output"></div>
 
     <!-- Blind Line Sentence Section -->
-    <button onclick="generateSentence()">Random Sentence</button>
-    <div id="sentenceOutput" style="margin: 10px 0; font-size: 1.5em;"></div>
+    <button class="game-button" onclick="generateSentence()">Random Sentence</button>
+    <div id="sentenceOutput" class="output"></div>
   </div>
 
   <script>
@@ -93,8 +94,9 @@
       const randomPrompt = scenePrompts[Math.floor(Math.random() * scenePrompts.length)];
       document.getElementById('scenePromptOutput').innerText = randomPrompt;
     }
-  // Attach an event listener for the back button to perform the reverse slide transition.
-  document.getElementById('back').addEventListener('click', function(e) {
+
+    // Attach an event listener for the back button to perform the reverse slide transition.
+    document.getElementById('back').addEventListener('click', function(e) {
       e.preventDefault();
       const targetUrl = this.href;
       document.getElementById('pageContainer').classList.add('slide-out-back');
