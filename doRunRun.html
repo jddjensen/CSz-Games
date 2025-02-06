@@ -29,7 +29,7 @@
 
     // Load names from names.txt on page load
     function loadNames() {
-      fetch('names.txt')
+      fetch('text_files/names.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error("Network response was not ok");

@@ -29,7 +29,7 @@
 
     // Load movies from deleted_scenes_movies.txt
     function loadMovies() {
-      fetch('deleted_scenes_movies.txt')
+      fetch('text_files/deleted_scenes_movies.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error("Network response was not ok");

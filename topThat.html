@@ -31,7 +31,7 @@
 
     // Load actions from the text file
     function loadActions() {
-      fetch('top_that_actions.txt')
+      fetch('text_files/top_that_actions.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error("Network response was not ok");

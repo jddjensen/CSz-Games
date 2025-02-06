@@ -42,7 +42,7 @@
 
     // Load sentences from blind_line_prompts.txt
     function loadSentences() {
-      fetch('blind_line_prompts.txt')
+      fetch('text_files/blind_line_prompts.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
@@ -61,7 +61,7 @@
 
     // Load scene prompts from scene_prompts.txt
     function loadScenePrompts() {
-      fetch('scene_prompts.txt')
+      fetch('text_files/scene_prompts.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error("Network response was not ok");

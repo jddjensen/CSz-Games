@@ -39,7 +39,7 @@
   <script>
     // Function to fetch a random scene prompt from scene_prompts.txt
     function getScenePrompt() {
-      fetch('scene_prompts.txt')
+      fetch('text_files/scene_prompts.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -62,10 +62,10 @@
     function generateStyleChange() {
       // Define an array of categories with corresponding text file names.
       const categories = [
-        { name: "Highschool Clique", file: "highschool_clique.txt" },
-        { name: "Movie Genera", file: "movie_genera.txt" },
-        { name: "Emotion", file: "emotion.txt" },
-        { name: "Accent", file: "accents.txt" }
+        { name: "Highschool Clique", file: "text_files/highschool_clique.txt" },
+        { name: "Movie Genera", file: "text_files/movie_genera.txt" },
+        { name: "Emotion", file: "text_files/emotion.txt" },
+        { name: "Accent", file: "text_files/accents.txt" }
       ];
       
       // Pick a random category.

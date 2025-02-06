@@ -29,7 +29,7 @@
 
     // Load prompts from hey_weightier_prompts.txt
     function loadPrompts() {
-      fetch('hey_weightier_prompts.txt')
+      fetch('text_files/hey_weightier_prompts.txt')
         .then(response => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
